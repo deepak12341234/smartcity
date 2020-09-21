@@ -1,0 +1,17 @@
+<%@page import="project.ConnectionProvider,java.sql.*"%>
+           
+<% 
+Connection con=ConnectionProvider.getCon();
+Statement st=con.createStatement();
+try
+{
+	st.execute("CREATE TABLE  USER_INFO(USERNAME VARCHAR(20),PASSWORD VARCHAR(20),MOBILE VARCHAR(10),EMAIL VARCHAR(100), CONSTRAINT USER_INFO_PK PRIMARY KEY (USERNAME) )");
+	st.execute("CREATE TABLE  CATEGORY(CATEGORYID int,CATEGORYNAME VARCHAR(40), PRIMARY KEY (CATEGORYID) )");
+	st.execute("CREATE TABLE  CATEGORY_INFO(CATEGORYNAME VARCHAR(40),PLACENAME VARCHAR(400),ADDRESS VARCHAR(400),CONTACTNO VARCHAR(10),ALLOW VARCHAR(5),INFOID int,LANDMARK VARCHAR(400),POSTEDBY VARCHAR(40), PRIMARY KEY (INFOID)  )");
+
+}catch(Exception e)
+{
+System.out.println(e);	
+}
+con.close();
+%>
